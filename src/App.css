@@ -5,7 +5,7 @@ body{
 h1{
   color: white;
   font-size: 60px;
-  margin: 0!important;
+  margin: 30px!important;
 }
 
 h2{
@@ -18,7 +18,10 @@ h3{
 .text{
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding-left: 30px;
-  max-width: 700px;
+  max-width: 650px;
   margin-top: 15%;
   text-align: center;
+}
+.firstImage{
+  max-width: 20%;
 }

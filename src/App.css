@@ -3,5 +3,16 @@ body{
 }
 
 h1{
-  color: aliceblue;
+  color: white;
+}
+
+h2{
+  color: white;
+}
+
+h3{
+  color: white;
+}
+.text{
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }

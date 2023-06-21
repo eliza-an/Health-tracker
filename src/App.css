@@ -4,7 +4,7 @@ body{
 
 h1{
   color: white;
-  font-size: 60px;
+  font-size: 56px;
   margin: 30px!important;
 }
 
@@ -14,26 +14,41 @@ h2{
 
 h3{
   color: white;
+  font-size: 19px;
 }
+
 .text{
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding-left: 30px;
-  margin-top: 15%;
+  margin-top: 10%;
   text-align: center;
   width: 50%;
  
 }
 
-
- .image {
-   width: 50%;
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-   padding: 20px;
-    }
+.image {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0% !important;
+  padding: 0% !important;
+}
 
 .firstImage {
   max-width: 100%;
   height: auto;
+  display: flex;
+  width: 600px;
+  height: 601px;
+  object-fit: cover;
+  margin: 0% !important;
+  padding: 0% !important;
+  
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
 }

@@ -1,0 +1,14 @@
+.FirstButton{
+    border-radius: 4px;
+    margin-top: 30px;
+    padding:10px;
+    border: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:#CD8F81 ;
+    font-size: 15px;
+
+}
+
+.FirstButton:hover{
+    cursor: pointer;
+}

@@ -8,9 +8,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />}>
           <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
+          {/* <Route path="blogs" element={<Blogs />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} />
+          <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,19 +1,42 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/home";
 import BoxTracker from "./pages/tracker";
+import React, { Component } from 'react';
 
-export default function App() {
+export default class App extends Component() {
   render(){
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="/Tracker" element={<BoxTracker />} />
-          {/* <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} /> */}
-        </Route>
-      </Routes>
+      <div>
+        <h2>Welcome to React Router Tutorial</h2>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <ul className="navbar-nav mr-auto">
+            <li>
+              <Link to={"/"} className="nav-link">
+                {" "}
+                Home{" "}
+              </Link>
+            </li>
+            <li>
+              <Link to={"/tracker"} className="nav-link">
+                tracker
+              </Link>
+            </li>
+            {/* <li>
+              <Link to={"/about"} className="nav-link">
+                About
+              </Link>
+            </li> */}
+          </ul>
+        </nav>
+        <hr />
+        <Routes>
+          <Route exact path="/" component={Home} />
+          <Route path="/tracker" component={BoxTracker} />
+          {/* <Route path="/about" component={About} /> */}
+        </Routes>
+      </div>
     </Router>
   );}
 }

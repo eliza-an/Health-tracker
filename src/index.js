@@ -1,20 +1,21 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./pages/home";
+import BoxTracker from "./pages/tracker";
 
 export default function App() {
+  render(){
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<Home />}>
-          <Route index element={<Home />} />
-          {/* <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
+          <Route path="/Tracker" element={<BoxTracker />} />
+          {/* <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>
-    </BrowserRouter>
-  );
+    </Router>
+  );}
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

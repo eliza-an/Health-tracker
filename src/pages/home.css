@@ -1,5 +1,6 @@
 body{
-  background-color: #CD8F81
+  background-color: #CD8F81;
+  max-width: 100%;
 }
 
 h1{
@@ -28,6 +29,7 @@ h3{
 
 .image {
   width: 50%;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -37,7 +39,7 @@ h3{
 
 .firstImage {
   max-width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
   width: 600px;
   height: 601px;

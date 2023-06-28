@@ -4,9 +4,26 @@ ul li a {
 }
 
 ul li a:hover {
-    color: #00a8ff;
+    color:#e0bebe
 }
 
 ul li a.active {
-    color: #00a8ff;
+    color: #ffffff;
+}
+
+ul{
+    display: inline-flex;
+
+}
+
+li{
+    padding: 20px;
+    list-style: none;
+    margin: 0px !important
+}    
+
+nav{
+    max-width: 100px;
+    padding: 0% !important;
+    margin: 0px !important;
 }

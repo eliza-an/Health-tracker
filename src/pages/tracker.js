@@ -1,48 +1,27 @@
+import React, { useState } from "react";
 import "./tracker.css"
-import Button from "../components/button/button";
 
-function BoxTracker(){
-    return (
-      <div>
-        <div className="gridContainer">
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeet</div>
-          <div className="gridItem">yeettt</div>
+function BoxTracker() {
+  const [columnCount, setColumnCount] = useState(32);
 
+  const addColumn = () => {
+    setColumnCount(columnCount + 32);
+  };
 
-
-
-        </div>
-        <Button className={"Additional-Row"} onClick={""}></Button>
+  return (
+    <div>
+      <div className="gridContainer">
+        {[...Array(columnCount)].map((_, index) => (
+          <div className="gridItem" key={index}>
+            yeet
+          </div>
+        ))}
       </div>
-    );
-}export default BoxTracker
+      <button className="Additional-Row" onClick={addColumn}>
+        Add a New Column
+      </button>
+    </div>
+  );
+}
+
+export default BoxTracker;

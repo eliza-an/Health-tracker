@@ -12,19 +12,24 @@ function BoxTracker() {
   };
 
 
-const [myColor, setmyColor] = useState("white");
-    
+const [myColor, setMyColor] = useState(Array(columnCount).fill("white"));
 
+const handleClick = (index) => {
+  const updatedColors = [...myColor];
+  updatedColors[index] = updatedColors[index] === "white" ? "blue" : "white";
+  setMyColor(updatedColors);
+};
 
   return (
     <div>
       <div className="gridContainer">
         {/* creates a new array with length collumn count. ... spreads the aray into individual elements. .map executes a callback function over each element in the array */}
-        {[...Array(columnCount)].map((_, index) => (
+        
+           {myColor.map((color, index) => (
           <div
             className="gridItem"
-            onClick={() => setmyColor("blue")}
-            style={{ backgroundColor: myColor }}
+            onClick={() => handleClick(index)}
+          style={{ backgroundColor: color }}
             key={index}
           >
             yeet

@@ -13,7 +13,7 @@ function BoxTracker() {
   const addColumn = () => {
     setColumnCount(columnCount + 31);
      setMyColor([...myColor, ...Array(31).fill("white")]);
-     setTitle(["Add a title"])
+     
 
   };
 
@@ -31,7 +31,7 @@ const handleClick = (index) => {
       <DateTime />
       <div className="gridContainer">
         {/* creates a new array with length collumn count. ... spreads the aray into individual elements. .map executes a callback function over each element in the array */}
-        <div className="rowTitle" onClick={() => setTitle("New title")}> {title}</div>
+        <div className="rowTitle" onClick={() => setTitle(<input type="text" name="HabitName" />)}> {title}</div>
         {myColor.map((color, index) => (
           <div
             className="gridItem"

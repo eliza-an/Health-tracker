@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import "./tracker.css"
+import DateTime from "../components/dateTime";
 
 
 
@@ -24,7 +25,9 @@ const handleClick = (index) => {
 
   return (
     <div>
+      <DateTime />
       <div className="gridContainer">
+        
         {/* creates a new array with length collumn count. ... spreads the aray into individual elements. .map executes a callback function over each element in the array */}
         
            {myColor.map((color, index) => (

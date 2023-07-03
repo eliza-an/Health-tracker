@@ -18,7 +18,7 @@ function BoxTracker() {
 
 const handleClick = (index) => {
   const updatedColors = [...myColor];
-  updatedColors[index] = updatedColors[index] === "white" ? "blue" : "white";
+  updatedColors[index] = updatedColors[index] === "white" ? "green" : "white";
   setMyColor(updatedColors);
 };
 

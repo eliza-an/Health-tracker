@@ -6,13 +6,15 @@ import "./tracker.css"
 
 function BoxTracker() {
   const [columnCount, setColumnCount] = useState(32);
+  const [myColor, setMyColor] = useState(Array(columnCount).fill("white"));
 
   const addColumn = () => {
     setColumnCount(columnCount + 32);
+     setMyColor([...myColor, ...Array(32).fill("white")]);
   };
 
 
-const [myColor, setMyColor] = useState(Array(columnCount).fill("white"));
+
 
 const handleClick = (index) => {
   const updatedColors = [...myColor];

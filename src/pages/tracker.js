@@ -84,3 +84,6 @@ function BoxTracker() {
 
 export default BoxTracker;
 
+
+localStorage.setItem()
+

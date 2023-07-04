@@ -27,9 +27,9 @@ function BoxTracker() {
     setMyColor([...myColor, ...Array(31).fill("white")]);
   };
 
-  const handleClick = (index) => {
+  const handleClick = (dayIndex) => {
     const updatedColors = [...myColor];
-    updatedColors[index] = updatedColors[index] === "white" ? "green" : "white";
+    updatedColors[dayIndex] = updatedColors[dayIndex] === "white" ? "green" : "white";
     setMyColor(updatedColors);
   };
 
@@ -38,34 +38,38 @@ function BoxTracker() {
 
   return (
     <div>
-    <div>
-      <DateTime />
-      <div className="gridContainer">
-        {/* creates a new array with length collumn count. ... spreads the aray into individual elements. .map executes a callback function over each element in the array */}
-      <table>
-        <thead>
-          <tr>
-            <th className="habitName">Habit</th>
-            {[...Array(numDaysInMonth)].map((_, index) => (
-              <th key={index}>{index + 1}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {[...Array(rowCount)].map((_, rowIndex) => (
-            <tr    key={rowIndex}>
-              <td>
-               <input type="text" />
-              </td>
-              {[...Array(numDaysInMonth)].map((_, dayIndex) => (
-                <td className="gridItem"onClick={handleClick} key={dayIndex}></td>
+      <div>
+        <DateTime />
+        <div>
+          {/* creates a new array with length collumn count. ... spreads the aray into individual elements. .map executes a callback function over each element in the array */}
+          <table className="gridContainer">
+            <thead>
+              <tr>
+                <th className="habitName">Habit</th>
+                {[...Array(numDaysInMonth)].map((_, index) => (
+                  <th key={index}>{index + 1}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[...Array(rowCount)].map((_, rowIndex) => (
+                <tr key={rowIndex}>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  {[...Array(numDaysInMonth)].map((_, dayIndex, color) => (
+                    <td
+                      className="gridItem"
+                      onClick={() => handleClick(dayIndex)}
+                      style={{ backgroundColor: myColor[dayIndex] }}
+                      key={dayIndex}
+                    ></td>
+                  ))}
+                </tr>
               ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
+            </tbody>
+          </table>
+        </div>
       </div>
       <button className="Additional-Row" onClick={handleAddRow}>
         Add a New Column

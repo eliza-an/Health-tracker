@@ -27,9 +27,9 @@ function BoxTracker() {
     setMyColor([...myColor, ...Array(31).fill("white")]);
   };
 
-  const handleClick = (dayIndex) => {
+  const handleClick = (index) => {
     const updatedColors = [...myColor];
-    updatedColors[dayIndex] = updatedColors[dayIndex] === "white" ? "green" : "white";
+    updatedColors[index] = updatedColors[index] === "white" ? "green" : "white";
     setMyColor(updatedColors);
   };
 
@@ -57,14 +57,18 @@ function BoxTracker() {
                   <td>
                     <input type="text" />
                   </td>
-                  {[...Array(numDaysInMonth)].map((_, dayIndex, color) => (
+                  {[...Array(numDaysInMonth)].map((_, dayIndex) => {
+                    const index = rowIndex * numDaysInMonth + dayIndex;
+                    return(
                     <td
                       className="gridItem"
-                      onClick={() => handleClick(dayIndex)}
-                      style={{ backgroundColor: myColor[dayIndex] }}
+                      onClick={() => handleClick(index)}
+                      style={{ backgroundColor: myColor[index] }}
                       key={dayIndex}
                     ></td>
-                  ))}
+                    );
+
+                  })}
                 </tr>
               ))}
             </tbody>

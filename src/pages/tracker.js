@@ -19,6 +19,16 @@ function BoxTracker() {
   const [myColor, setMyColor] = useState(Array(columnCount).fill("white"));
 
  
+  const [habitNames,setHabitNames] = useState(() => {
+    // getting stored value
+  const savedHabitNames = localStorage.getItem("Habit-Names");
+  // baiscally an if statement 
+  const initialHabitNames = savedHabitNames ? JSON.parse(savedHabitNames) : [""] 
+  return initialHabitNames;
+  })
+
+
+
 
   const [rowCount, setRowCount] = useState(() => {
     // getting stored value
@@ -32,6 +42,12 @@ function BoxTracker() {
     setMyColor([...myColor, ...Array(31).fill("white")]);
   };
 
+
+    const handleHabitNameChange = (index, value) => {
+    const updatedHabitNames = [...habitNames];
+    updatedHabitNames[index] = value;
+    setHabitNames(updatedHabitNames);
+  };
   const handleClick = (index) => {
     const updatedColors = [...myColor];
     updatedColors[index] = updatedColors[index] === "lightgreen" ? "green" : "lightgreen";
@@ -39,13 +55,9 @@ function BoxTracker() {
   };
 
   useEffect(() => {
-  // storing number of rows
-  localStorage.setItem("rowCount", JSON.stringify(rowCount));
-}, [rowCount]);
-  useEffect(() => {
-    // storing number of rows
     localStorage.setItem("rowCount", JSON.stringify(rowCount));
-  }, [rowCount]);
+    localStorage.setItem("Habit-Names", JSON.stringify(habitNames));
+  }, [rowCount, habitNames]);
 
 
 
@@ -58,7 +70,7 @@ function BoxTracker() {
           <table className="gridContainer">
             <thead className="header-of-columns">
               <tr>
-                <th className="habitName">Habit</th>
+                <th className="habitNameTitle">Habit</th>
                 {/* it spreads out the array with length of daysinmonth (inside brackets). It generates the amount of table header cells based on that. The text inside each cell will be index+1 */}
                 {[...Array(numDaysInMonth)].map((_, index) => (
                   <th key={index}>{index + 1}</th>
@@ -66,22 +78,27 @@ function BoxTracker() {
               </tr>
             </thead>
             <tbody>
-              {[...Array(rowCount)].map((_, rowIndex) => (
+              {habitNames.map((habit, rowIndex) => (
                 <tr key={rowIndex}>
                   <td>
-                    <input type="text" />
+                    <input
+                      value={habit}
+                      onChange={(e) =>
+                        handleHabitNameChange(rowIndex, e.target.value)
+                      }
+                      type="text"
+                    />
                   </td>
                   {[...Array(numDaysInMonth)].map((_, dayIndex) => {
                     const index = rowIndex * numDaysInMonth + dayIndex;
-                    return(
-                    <td
-                      className="gridItem"
-                      onClick={() => handleClick(index)}
-                      style={{ backgroundColor: myColor[index] }}
-                      key={dayIndex}
-                    ></td>
+                    return (
+                      <td
+                        className="gridItem"
+                        onClick={() => handleClick(index)}
+                        style={{ backgroundColor: myColor[index] }}
+                        key={dayIndex}
+                      ></td>
                     );
-
                   })}
                 </tr>
               ))}

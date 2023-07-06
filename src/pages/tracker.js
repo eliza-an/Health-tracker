@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./tracker.css";
 import DateTime from "../components/datePicker/dateTime";
+import { useEffect } from "react";
 
 
 
@@ -19,8 +20,12 @@ function BoxTracker() {
 
  
 
-  const [rowCount, setRowCount] = useState(1);
-
+  const [rowCount, setRowCount] = useState(() => {
+    // getting stored value
+    const savedRows = localStorage.getItem("rowCount");
+    const initialValue = JSON.parse(savedRows);
+    return initialValue || 1;
+  });
   const handleAddRow = () => {
     setRowCount(rowCount + 1);
     setColumnCount(numDaysInMonth);
@@ -33,6 +38,14 @@ function BoxTracker() {
     setMyColor(updatedColors);
   };
 
+  useEffect(() => {
+  // storing number of rows
+  localStorage.setItem("rowCount", JSON.stringify(rowCount));
+}, [rowCount]);
+  useEffect(() => {
+    // storing number of rows
+    localStorage.setItem("rowCount", JSON.stringify(rowCount));
+  }, [rowCount]);
 
 
 
@@ -43,9 +56,10 @@ function BoxTracker() {
         <div>
           {/* creates a new array with length collumn count. ... spreads the aray into individual elements. .map executes a callback function over each element in the array */}
           <table className="gridContainer">
-            <thead>
+            <thead className="header-of-columns">
               <tr>
                 <th className="habitName">Habit</th>
+                {/* it spreads out the array with length of daysinmonth (inside brackets). It generates the amount of table header cells based on that. The text inside each cell will be index+1 */}
                 {[...Array(numDaysInMonth)].map((_, index) => (
                   <th key={index}>{index + 1}</th>
                 ))}
@@ -85,5 +99,4 @@ function BoxTracker() {
 export default BoxTracker;
 
 
-localStorage.setItem()
 

@@ -29,6 +29,7 @@ function BoxTracker() {
 
 
 
+  const [selectedIndexes, setSelectedIndexes] = useState([]);
 
   const [rowCount, setRowCount] = useState(() => {
     // getting stored value
@@ -47,17 +48,35 @@ function BoxTracker() {
     const updatedHabitNames = [...habitNames];
     updatedHabitNames[index] = value;
     setHabitNames(updatedHabitNames);
+
   };
+
+
+
   const handleClick = (index) => {
     const updatedColors = [...myColor];
     updatedColors[index] = updatedColors[index] === "lightgreen" ? "green" : "lightgreen";
     setMyColor(updatedColors);
+
+  const updatedIndexes = [...selectedIndexes];
+  updatedIndexes.push(index);
+  setSelectedIndexes(updatedIndexes);
+
+     localStorage.setItem("completed", JSON.stringify(updatedIndexes));
+  
   };
 
   useEffect(() => {
     localStorage.setItem("rowCount", JSON.stringify(rowCount));
     localStorage.setItem("Habit-Names", JSON.stringify(habitNames));
-  }, [rowCount, habitNames]);
+    const storedIndexes = JSON.parse(localStorage.getItem("completed"));
+
+    if (storedIndexes && Array.isArray(storedIndexes)) {
+      setSelectedIndexes(storedIndexes);
+    }
+
+
+  }, [rowCount, habitNames, myColor] )
 
 
 

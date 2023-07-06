@@ -55,25 +55,42 @@ function BoxTracker() {
 
   const handleClick = (index) => {
     const updatedColors = [...myColor];
-    updatedColors[index] = updatedColors[index] === "lightgreen" ? "green" : "lightgreen";
+   const handleClick = (index) => {
+    const updatedColors = [...myColor];
+    updatedColors[index] = updatedColors[index] === "lightgreen" ? "green" : (updatedColors[index] === "green" ? "white" : "lightgreen");
     setMyColor(updatedColors);
 
   const updatedIndexes = [...selectedIndexes];
   updatedIndexes.push(index);
   setSelectedIndexes(updatedIndexes);
 
-     localStorage.setItem("completed", JSON.stringify(updatedIndexes));
+    localStorage.setItem("completedIndexes", JSON.stringify(updatedIndexes));
+    localStorage.setItem("completedColors", JSON.stringify(updatedColors));
+  
+  };
+    setMyColor(updatedColors);
+
+  const updatedIndexes = [...selectedIndexes];
+  updatedIndexes.push(index);
+  setSelectedIndexes(updatedIndexes);
+
+    localStorage.setItem("completedIndexes", JSON.stringify(updatedIndexes));
+    localStorage.setItem("completedColors", JSON.stringify(updatedColors));
   
   };
 
   useEffect(() => {
     localStorage.setItem("rowCount", JSON.stringify(rowCount));
     localStorage.setItem("Habit-Names", JSON.stringify(habitNames));
-    const storedIndexes = JSON.parse(localStorage.getItem("completed"));
+    const storedIndexes = JSON.parse(localStorage.getItem("completedIndexes"));
+      if (storedIndexes && Array.isArray(storedIndexes)) {
+        setSelectedIndexes(storedIndexes);
+      }
 
-    if (storedIndexes && Array.isArray(storedIndexes)) {
-      setSelectedIndexes(storedIndexes);
-    }
+  const storedColors = JSON.parse(localStorage.getItem("completedColors"));
+  if (storedColors && Array.isArray(storedColors)) {
+    setMyColor(storedColors);
+  }
 
 
   }, [rowCount, habitNames, myColor] )

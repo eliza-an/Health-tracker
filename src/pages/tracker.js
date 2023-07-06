@@ -55,19 +55,7 @@ function BoxTracker() {
 
   const handleClick = (index) => {
     const updatedColors = [...myColor];
-   const handleClick = (index) => {
-    const updatedColors = [...myColor];
-    updatedColors[index] = updatedColors[index] === "lightgreen" ? "green" : (updatedColors[index] === "green" ? "white" : "lightgreen");
-    setMyColor(updatedColors);
-
-  const updatedIndexes = [...selectedIndexes];
-  updatedIndexes.push(index);
-  setSelectedIndexes(updatedIndexes);
-
-    localStorage.setItem("completedIndexes", JSON.stringify(updatedIndexes));
-    localStorage.setItem("completedColors", JSON.stringify(updatedColors));
-  
-  };
+    updatedColors[index] =  updatedColors[index] === "lightgreen" ? "green" : updatedColors[index] === "green" ? "white"  : "lightgreen";;
     setMyColor(updatedColors);
 
   const updatedIndexes = [...selectedIndexes];

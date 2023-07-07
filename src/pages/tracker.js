@@ -37,10 +37,11 @@ function BoxTracker() {
     const initialValue = JSON.parse(savedRows);
     return initialValue || 1;
   });
+
   const handleAddRow = () => {
     setRowCount(rowCount + 1);
     setColumnCount(numDaysInMonth);
-    setMyColor([...myColor, ...Array(31).fill("white")]);
+    setMyColor([...myColor, ...Array(numDaysInMonth).fill("white")]);
   };
 
 
@@ -74,14 +75,14 @@ function BoxTracker() {
       if (storedIndexes && Array.isArray(storedIndexes)) {
         setSelectedIndexes(storedIndexes);
       }
-
+      
   const storedColors = JSON.parse(localStorage.getItem("completedColors"));
   if (storedColors && Array.isArray(storedColors)) {
     setMyColor(storedColors);
   }
 
 
-  }, [rowCount, habitNames, myColor] )
+  }, [rowCount, habitNames] )
 
 
 

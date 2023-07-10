@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 
 
+
 function BoxTracker() {
   // Get the current month and number of days
   const currentDate = new Date();
@@ -31,17 +32,15 @@ function BoxTracker() {
 
   const [selectedIndexes, setSelectedIndexes] = useState([]);
 
-  const [rowCount, setRowCount] = useState(() => {
-    // getting stored value
-    const savedRows = localStorage.getItem("rowCount");
-    const initialValue = JSON.parse(savedRows);
-    return initialValue || 1;
-  });
+
 
   const handleAddRow = () => {
-    setRowCount(rowCount + 1);
+
     setColumnCount(numDaysInMonth);
     setMyColor([...myColor, ...Array(numDaysInMonth).fill("white")]);
+    const updatedHabitNames = [...habitNames];
+    updatedHabitNames.push("");
+    setHabitNames(updatedHabitNames);
   };
 
 
@@ -68,8 +67,9 @@ function BoxTracker() {
   
   };
 
-  useEffect(() => {
-    localStorage.setItem("rowCount", JSON.stringify(rowCount));
+  useEffect(() => { 
+    
+
     localStorage.setItem("Habit-Names", JSON.stringify(habitNames));
     const storedIndexes = JSON.parse(localStorage.getItem("completedIndexes"));
       if (storedIndexes && Array.isArray(storedIndexes)) {
@@ -79,10 +79,11 @@ function BoxTracker() {
   const storedColors = JSON.parse(localStorage.getItem("completedColors"));
   if (storedColors && Array.isArray(storedColors)) {
     setMyColor(storedColors);
+   
   }
 
 
-  }, [rowCount, habitNames] )
+  }, [habitNames] )
 
 
 

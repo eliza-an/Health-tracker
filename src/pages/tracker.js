@@ -54,8 +54,14 @@ function BoxTracker() {
     updatedHabitNames[index] = value;
     setHabitNames(updatedHabitNames);
 
-  };
-
+  };  
+  const removeRow = (index, e) => {
+    let updatedHabitNames = [...habitNames];
+    updatedHabitNames= updatedHabitNames.filter((v, i) => 
+    i !==index 
+    )
+    setHabitNames(updatedHabitNames)
+  }; 
 
 
   const handleClick = (index) => {
@@ -135,6 +141,8 @@ function BoxTracker() {
                   <FontAwesomeIcon
                     icon={solid("trash")}
                     style={{ color: "#000000" }}
+                    className="trashCan"
+                    onClick={e =>removeRow(rowIndex, e)}
                   />
                 </tr>
               ))}

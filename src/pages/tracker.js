@@ -3,7 +3,6 @@ import "./tracker.css";
 import DateTime from "../components/datePicker/dateTime";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 
@@ -61,6 +60,7 @@ function BoxTracker() {
     i !==index 
     )
     setHabitNames(updatedHabitNames)
+    
   }; 
 
 

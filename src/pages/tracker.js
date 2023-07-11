@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./tracker.css";
 import DateTime from "../components/datePicker/dateTime";
 import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
+
 
 
 
@@ -18,6 +21,7 @@ function BoxTracker() {
   
   const [columnCount, setColumnCount] = useState(numDaysInMonth);
   const [myColor, setMyColor] = useState(Array(columnCount).fill("white"));
+
 
  
   const [habitNames,setHabitNames] = useState(() => {
@@ -91,6 +95,7 @@ function BoxTracker() {
     <div>
       <div>
         <DateTime />
+        <FontAwesomeIcon icon={icon({ name: "user-secret" })} />
         <div>
           {/* creates a new array with length collumn count. ... spreads the aray into individual elements. .map executes a callback function over each element in the array */}
           <table className="gridContainer">
